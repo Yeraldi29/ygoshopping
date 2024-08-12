@@ -3,7 +3,7 @@ import {
   PUBLIC_SUPABASE_URL,
 } from "$env/static/public";
 import { createServerClient } from "@supabase/ssr";
-import type { Handle } from "@sveltejs/kit";
+import { redirect, type Handle } from "@sveltejs/kit";
 
 export const handle: Handle = async ({ event, resolve }) => {
   event.locals.supabase = createServerClient(
@@ -50,6 +50,19 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     return { session, user };
   };
+
+  const { session, user } = await event.locals.safeGetSession();
+
+  if (!session && event.url.pathname.includes('/private')) {
+    redirect(303, '/login');
+  }
+
+  if (session && event.url.pathname === '/login') {
+    redirect(303, '/private');
+  }
+
+  event.locals.session = session
+  event.locals.user = user
 
   return resolve(event, {
     filterSerializedResponseHeaders(name) {
