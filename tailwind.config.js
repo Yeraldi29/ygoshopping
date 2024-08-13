@@ -4,10 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'alice-blue': '#EAF5FF',
-        'light-steel-blue': '#A9C6DE',
-        'myrtle-green': '#247E6C',
-        'arylide-yellow': '#E4C666',
+        'dark-gray': '#273849',
+        'neutral-gray': '#b3b7bd',
+        'trustworthy-blue': '#4e6e83',
+        'sucess-green': '#28a745',
+        'vibrant-cyan': '#45c1cc',
+        'warm-orange': '#f5a623',
+        'soft-white': '#fcfdfd',
+        'subtle-beige': '#f9f6f2',
       }
     },
   },
