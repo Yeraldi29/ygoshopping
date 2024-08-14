@@ -12,6 +12,9 @@ export default {
         'warm-orange': '#f5a623',
         'soft-white': '#fcfdfd',
         'subtle-beige': '#f9f6f2',
+      },
+      fontFamily: {
+        moderustic: ['Moderustic', 'sans-serif'],
       }
     },
   },
