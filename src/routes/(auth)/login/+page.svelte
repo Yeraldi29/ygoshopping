@@ -1,8 +1,8 @@
-<!-- src/routes/+page.svelte -->
 <script lang="ts">
   import { enhance } from "$app/forms";
+  import Button from "$lib/components/ui/button/button.svelte";
+  import IconGoogle from "$lib/icons/IconGoogle.svelte";
   import { type SubmitFunction } from "@sveltejs/kit";
-
   export let data;
 
   const handleSubmit: SubmitFunction = ({ cancel }) => {
@@ -23,6 +23,9 @@
 
 <div>
   <form method="post" use:enhance={handleSubmit}>
-    <button> Iniciar sesion </button>
+    <Button class="py-6">
+      <IconGoogle />
+      <h2 class="text-lg">Ingresar</h2>
+    </Button>
   </form>
 </div>
