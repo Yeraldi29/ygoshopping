@@ -2,7 +2,6 @@
   import { enhance } from "$app/forms";
   import Button from "$lib/components/ui/button/button.svelte";
   import IconGoogle from "$lib/icons/IconGoogle.svelte";
-  import * as Card from "$lib/components/ui/card";
   import { type SubmitFunction } from "@sveltejs/kit";
   import logoRemovebg from "$lib/images/logo-removebg.webp";
   export let data;
