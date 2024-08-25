@@ -7,6 +7,6 @@ export const load: PageServerLoad = async ({
     if (session) {
         redirect(303, '/private')
     } else {
-        redirect(303, '/login')
+        redirect(303, '/auth/login')
     }
 };

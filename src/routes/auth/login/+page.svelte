@@ -4,17 +4,10 @@
   import IconGoogle from "$lib/icons/IconGoogle.svelte";
   import { type SubmitFunction } from "@sveltejs/kit";
   import logoRemovebg from "$lib/images/logo-removebg.webp";
-  export let data;
+    import { page } from "$app/stores";
 
-  const handleSubmit: SubmitFunction = ({ cancel }) => {
-    data.supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `http://localhost:5173/auth/callback`,
-      },
-    });
-
-    cancel();
+  
+  const handleSubmit: SubmitFunction = async ({ cancel }) => {
   };
 </script>
 
@@ -25,7 +18,7 @@
 <div class="h-screen flex flex-col justify-center items-center">
   <img src={logoRemovebg} alt="logo" class=" w-32 h-32 mx-auto mb-4" />
   <h1 class="text-3xl font-semibold px-12 text-center">
-    Bienvenidos a YGOSHOPPING
+    Bienvenidos a YGOS HOPPING
   </h1>
   <div class="max-w-xs w-full mx-auto">
     <h3 class="text-lg text-center px-2 py-4">
@@ -33,11 +26,14 @@
       día.
     </h3>
     <form
-      method="post"
+      method="POST"
       use:enhance={handleSubmit}
       class="w-full flex flex-col items-center"
     >
-      <Button class="mt-4 py-6 bg-trustworthy-blue border-vibrant-cyan border ">
+      <Button
+        type="submit"
+        class="mt-4 py-6 bg-trustworthy-blue border-vibrant-cyan border "
+      >
         <IconGoogle />
         <h2 class="text-lg">Continua con Google</h2>
       </Button>
