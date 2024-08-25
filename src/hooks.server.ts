@@ -51,18 +51,15 @@ export const handle: Handle = async ({ event, resolve }) => {
     return { session, user };
   };
 
-  const { session, user } = await event.locals.safeGetSession();
-
-  if (!session && event.url.pathname.includes('/private')) {
-    redirect(303, '/login');
-  }
-
-  if (session && event.url.pathname === '/login') {
-    redirect(303, '/private');
-  }
-
-  event.locals.session = session
-  event.locals.user = user
+  const { session } = await event.locals.safeGetSession();
+  
+    if (!session && event.url.pathname.includes('/private')) {
+      redirect(303, '/auth/login');
+    }
+  
+    if (session && event.url.pathname === '/auth/login') {
+      redirect(303, '/private');
+    }
 
   return resolve(event, {
     filterSerializedResponseHeaders(name) {
