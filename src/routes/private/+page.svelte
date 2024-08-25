@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { enhance } from "$app/forms";
-  import type { SubmitFunction } from "@sveltejs/kit";
+  import { getLocalTimeZone, today } from "@internationalized/date";
+  import { Calendar } from "$lib/components/ui/calendar/index.js";
 
-  const handleSubmit: SubmitFunction = ({}) => {};
+  let value = today(getLocalTimeZone());
 </script>
 
-<!-- <form method="POST" use:enhance={handleSubmit}>
-  <button type="submit"> Cerrar sesión </button>
-</form> -->
+<Calendar bind:value class="rounded-md border" />
