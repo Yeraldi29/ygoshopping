@@ -5,6 +5,6 @@
   const handleSubmit: SubmitFunction = ({}) => {};
 </script>
 
-<form method="POST" use:enhance={handleSubmit}>
+<!-- <form method="POST" use:enhance={handleSubmit}>
   <button type="submit"> Cerrar sesión </button>
-</form>
+</form> -->

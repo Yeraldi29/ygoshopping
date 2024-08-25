@@ -4,11 +4,8 @@
   import IconGoogle from "$lib/icons/IconGoogle.svelte";
   import { type SubmitFunction } from "@sveltejs/kit";
   import logoRemovebg from "$lib/images/logo-removebg.webp";
-    import { page } from "$app/stores";
 
-  
-  const handleSubmit: SubmitFunction = async ({ cancel }) => {
-  };
+  const handleSubmit: SubmitFunction = async ({ cancel }) => {};
 </script>
 
 <svelte:head>
@@ -18,7 +15,7 @@
 <div class="h-screen flex flex-col justify-center items-center">
   <img src={logoRemovebg} alt="logo" class=" w-32 h-32 mx-auto mb-4" />
   <h1 class="text-3xl font-semibold px-12 text-center">
-    Bienvenidos a YGOS HOPPING
+    Bienvenidos a YGOSHOPPING
   </h1>
   <div class="max-w-xs w-full mx-auto">
     <h3 class="text-lg text-center px-2 py-4">
