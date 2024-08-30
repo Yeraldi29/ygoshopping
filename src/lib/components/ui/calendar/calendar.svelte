@@ -2,28 +2,47 @@
   import { Calendar as CalendarPrimitive } from "bits-ui";
   import * as Calendar from "./index.js";
   import { cn } from "$lib/utils.js";
+  import {
+    DateFormatter,
+    getLocalTimeZone,
+    today,
+  } from "@internationalized/date";
+  import { capitalizeFirstLetter } from "$lib/utils/capitalizeFirstLetter.js";
 
   type $$Props = CalendarPrimitive.Props;
 
   type $$Events = CalendarPrimitive.Events;
 
   export let value: $$Props["value"] = undefined;
-  export let placeholder: $$Props["placeholder"] = undefined;
+  export let placeholder: $$Props["placeholder"] = today(getLocalTimeZone());
   export let weekdayFormat: $$Props["weekdayFormat"] = "short";
 
   let className: $$Props["class"] = undefined;
   export { className as class };
-  
-  let weekDaySpanish = [
-	"Do",
-	"Lu",
-	"Ma",
-	"Mi",
-	"Ju",
-	"Vi",
-	"Sa"
-  ]
-  
+
+  let weekDaySpanish = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
+
+  const monthFmt = new DateFormatter("es-ES", {
+    month: "long",
+  });
+
+  $: defaultYear = placeholder
+    ? {
+        value: placeholder.year,
+        label: String(placeholder.year),
+      }
+    : undefined;
+
+  $: defaultMonth = placeholder
+    ? {
+        value: placeholder.month,
+        label: monthFmt.format(placeholder.toDate(getLocalTimeZone())),
+      }
+    : undefined;
+  $: header =
+    defaultMonth && defaultYear
+      ? `${capitalizeFirstLetter(defaultMonth.label)} ${defaultYear.label}`
+      : "";
 </script>
 
 <CalendarPrimitive.Root
@@ -38,7 +57,7 @@
 >
   <Calendar.Header class="px-4">
     <Calendar.PrevButton />
-    <Calendar.Heading class="text-lg" />
+    <Calendar.Heading class="text-lg" bind:header />
     <Calendar.NextButton />
   </Calendar.Header>
   <Calendar.Months>
