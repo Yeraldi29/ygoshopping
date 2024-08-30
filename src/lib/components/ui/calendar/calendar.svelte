@@ -53,7 +53,6 @@
   {...$$restProps}
   on:keydown
   let:months
-  let:weekdays
 >
   <Calendar.Header class="px-4">
     <Calendar.PrevButton />

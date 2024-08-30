@@ -1,20 +1,17 @@
 <script lang="ts">
 	import { Calendar as CalendarPrimitive } from "bits-ui";
 	import { cn } from "$lib/utils.js";
-
-	// type $$Props = CalendarPrimitive.HeadingProps;
-
-	let className: $$Props["class"] = undefined;
+	
+	let className: string | undefined = undefined;
 	export let header: string
 	export { className as class };
 </script>
 
 <CalendarPrimitive.Heading
-	let:headingValue
 	class={cn("text-sm font-medium", className)}
 	{...$$restProps}
 >
 	<slot>
-{header}
+		{header}
 	</slot>
 </CalendarPrimitive.Heading>
