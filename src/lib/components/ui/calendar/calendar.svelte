@@ -75,11 +75,12 @@
           {#each month.weeks as weekDates}
             <Calendar.GridRow class="">
               {#each weekDates as date}
-                <Calendar.Cell {date} class="h-[7.2rem] w-full">
+                <Calendar.Cell {date} class="h-[7.2rem] w-full [&:has([data-selected])]:bg-transparent ">
                   <Calendar.Day
                     {date}
                     month={month.value}
-                    class="border h-full rounded-none  items-start py-2 w-full"
+                   class="border h-full rounded-none  items-start py-2 w-full hover:bg-transparent hover:text-white [&[data-today]:not([data-selected])]:bg-trustworthy-blue 
+                   [&[data-today]:not([data-selected])]:text-vibrant-cyan [&[data-outside-month][data-selected]]:bg-transparent"
                   />
                 </Calendar.Cell>
               {/each}
